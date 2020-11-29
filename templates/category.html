@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Welcome to Blog Site
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block profile %}
+
+{% endblock %}
+
+
+{% block content %}
+
+            {% for p in post %}
+
+                <article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-xxs-12 animate-box">
+				<figure>
+					<a href="{% url 'single-post' id=p.id %}"><img style="height:320px;width:250px;" src="{{ p.image.url }}" alt="Image"></a>
+				</figure>
+				<span class="fh5co-meta"><a href="{% url 'category' name=p.category.name %}">{{ p.category.name }}</a></span>
+				<h2 style="height:60px;" class="fh5co-article-title"><a style="height: 50px;" href="{% url 'single-post' id=p.id %}">{{ p.title }}</a></h2>
+				<span class="fh5co-meta fh5co-date">{{ p.posted_on|date:"M j, Y" }}</span>
+			</article>
+
+            {% endfor %}
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
