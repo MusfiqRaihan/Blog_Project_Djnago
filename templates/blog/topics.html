@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    All Topics
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block profile %}
+
+{% endblock %}
+
+{% block content %}
+     <div class="container">
+        <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td style="width: 300px!important;">Topics</td>
+                    <td style="text-align:center;">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in query %}
+                <tr>
+                    <td style="vertical-align: middle;!important"><a href="{% url 'category' name=q.name %}">{{ q.name }}</a></td>
+                    <td><a class="btn btn-sm btn-info" href="">Edit</a>
+                        <a href="" class="btn btn-sm btn-danger" >Delete</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+        <div class="col-md-4">
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success btn-sm">Create Category</button>
+            </form>
+        </div>
+
+
+
+        </div>
+     </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

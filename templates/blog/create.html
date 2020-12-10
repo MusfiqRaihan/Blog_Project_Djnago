@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Blog Site's Blog Post Page
+{% endblock %}
+
+{% block style %}
+#fh5co-offcanvas {
+    width: 400px;
+        }
+{% endblock %}
+
+{% block profile %}
+{#            <figure>#}
+{#            <img src="{{ auth.profile_pic.url }}" alt="profile pic" class="img-responsive">#}
+{#			</figure>#}
+{#			<h3 class="heading">About Me</h3>#}
+{#			<h2 style="margin-bottom:-5px;">{{ auth.name.get_full_name }}</h2>#}
+{#            <small>{{ auth.name.email }}</small>#}
+{#			<p style="margin-top:10px;">{{ auth.details }} </p>#}
+{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3 class="text-center" style="margin-bottom:20px;">Create Post</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form|crispy }}
+                        </div>
+                         <button class="btn btn-outline-success btn-block" style="margin-top:20px;font-size:20px;" type="submit">POST</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+

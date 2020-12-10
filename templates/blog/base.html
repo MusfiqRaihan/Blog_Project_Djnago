@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	<!-- Animate -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon -->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<style type="text/css">
+		#fh5co-offcanvas {
+    width: auto;
+}
+#fh5co-offcanvas .fh5co-menu, #fh5co-offcanvas .fh5co-bio {
+    width: auto;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 0px;
+}
+#fh5co-offcanvas .fh5co-menu {
+  float: left;
+}
+{% block style %}
+
+{% endblock %}
+	</style>
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+     <div id="fh5co-offcanvas">
+		<a href="#" class="fh5co-close-offcanvas js-fh5co-close-offcanvas"><span><i class="icon-cross3"></i> <span>Close</span></span></a>
+            <div class="fh5co-bio">
+
+    {% block profile %}
+
+    {% endblock %}
+    </div>
+
+		<div class="fh5co-menu">
+			<div class="fh5co-box">
+				<h3 class="heading">Menu</h3>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="{% url 'create-post' %}">Create new post</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'topics' %}">All Categories</a></li>
+                        <li><a href="{% url 'profile' %}">My Blogs</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+
+
+				</ul>
+			</div>
+			{% block search %}
+
+            {% endblock %}
+		    </div>
+	    </div>
+
+
+	<!-- END #fh5co-offcanvas -->
+	<header id="fh5co-header">
+		
+		<div class="container-fluid">
+
+			<div class="row">
+				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+				<ul class="fh5co-social">
+					<li><a href="https://twitter.com/"><i class="icon-twitter"></i></a></li>
+				    <li><a href="https://facebook.com/"><i class="icon-facebook"></i></a></li>
+				    <li><a href="https://instagram.com/"><i class="icon-instagram"></i></a></li>
+				</ul>
+				<div class="col-lg-12 col-md-12 text-center">
+					<h1 id="fh5co-logo"><a href="/">Blog Site</a></h1>
+				</div>
+
+			</div>
+		
+		</div>
+
+	</header>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry">
+			{% block content %}
+
+            {% endblock %}
+		</div>
+	</div>
+
+	<footer id="fh5co-footer">
+        <p><small>&copy; 2020 Blog Site. All Rights Reserved </small></p>
+	</footer>
+
+
+	
+	<!-- jQuery -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<!-- Main JS -->
+	<script src="{% static 'js/main.js' %}"></script>
+    {% block scripts %}
+
+    {% endblock %}
+
+	</body>
+</html>
+

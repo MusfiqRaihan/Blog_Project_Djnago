@@ -615,9 +615,6 @@ figure figcaption {
   color: #cccccc;
   margin-bottom: 30px;
 }
-#fh5co-offcanvas .fh5co-menu {
-  float: right;
-}
 #fh5co-offcanvas .fh5co-menu ul {
   padding: 0;
   margin: 0;
@@ -628,6 +625,10 @@ figure figcaption {
   list-style: none;
   display: block;
 }
+#fh5co-offcanvas .fh5co-menu {
+
+}
+
 #fh5co-offcanvas .fh5co-menu ul li a {
   color: #000;
 }

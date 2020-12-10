@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Create Author Page
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block profile %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h3 class="text-center">Create Author Profile</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success pull-right">Create Author</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

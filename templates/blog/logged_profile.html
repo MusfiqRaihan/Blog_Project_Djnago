@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    My Blog lists
+{% endblock %}
+
+{% block style %}
+    #fh5co-offcanvas {
+    width: 400px;
+    }
+{% endblock %}
+
+{% block profile %}
+        {% if request.user.is_authenticated %}
+            <figure>
+            <img src="{{ auth.profile_pic.url }}" alt="profile pic" class="img-responsive">
+			</figure>
+			<h3 class="heading">About Me</h3>
+			<h2 style="margin-bottom:-5px;">{{ auth.name.get_full_name }}</h2>
+            <small>{{ auth.name.email }}</small>
+			<p style="margin-top:10px;">{{ auth.details }} </p>
+        {%endif%}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        <a href="{% url 'create-post' %}" class="btn btn-sm btn-success pull pull-right" style="margin-bottom:20px;">Add New Article</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td style="width: 450px;!important">Title</td>
+                    <td class="text-center">Published</td>
+                    <td class="text-center">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in post %}
+                <tr>
+                    <td style="width: 450px!important;vertical-align: middle;!important">{{ p.title }}</td>
+                    <td class="text-center" style="vertical-align: middle;!important">{{ p.posted_on|date:"M d, Y" }}</td>
+                    <td class="text-right"><a class="btn btn-sm btn-info" href="{% url 'update-post' pid=p.id %}">Edit</a>  <a href="{% url 'delete-post' pid=p.id %}" class="btn btn-sm btn-danger" >Delete</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
